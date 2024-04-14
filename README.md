@@ -48,15 +48,15 @@ You can install Postman via this website: https://www.postman.com/downloads/
     (You might want to use `cargo check` if you only need to verify your work without running the app.)
 
 ## Mandatory Checklists (Publisher)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
+-   [x] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Subscriber model struct.`
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Subscriber repository.`
-    -   [ ] Commit: `Implement list_all function in Subscriber repository.`
-    -   [ ] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [x] Commit: `Create Subscriber model struct.`
+    -   [x] Commit: `Create Notification model struct.`
+    -   [x] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
+    -   [x] Commit: `Implement add function in Subscriber repository.`
+    -   [x] Commit: `Implement list_all function in Subscriber repository.`
+    -   [x] Commit: `Implement delete function in Subscriber repository.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -77,6 +77,11 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. Penggunaan *trait* atau *interface* pada *Observer Pattern* bergantung pada banyaknya tipe *Observer*. Jika *Observer* memiliki banyak tipe, penggunaan *trait* lebih diutamakan karena membuat desain kode yang lebih fleksibel dan mendukung *Open/Closed Principle* jika terdapat penambahan tipe *Observer* di kemudian hari. Namun, pada kasus BambangShop dimana *Observer* hanya terdiri dari satu jenis dan memiliki fungsionalitas yang sama, yaitu hanya Subscriber saja, penggunaan trait tidak diperlukan dan sudah cukup dengan menggunakan satu model *struct* saja.
+
+2. Penggunaan DashMap memiliki keuntungan dari segi efisiensi dibandingkan dengan Vec ketika berhubungan dengan data yang cukup besar, yaitu dengan mempercepat proses operasi yang berhubungan dengan pencarian data karena `id` atau `url` yang unik yang dapat menjadi *key* pada DashMap sehingga memiliki akses yang cepat untuk mendapatkan suatu *value* tertentu. Berbeda dengan Vec yang perlu mengiterasi setiap isinya untuk mencari suatu value tertentu sehingga penggunaan DashMap lebih efisien.
+
+3. Dalam konteks *multithreading*, penggabungan antara penggunaan DashMap dan *Singleton Pattern* perlu untuk dilakukan untuk memastikan keamanan operasi *thread* secara *concurrent*. Penggunaan *Singleton Pattern* memberikan kepastian bahwa hanya terdapat satu objek SUBSCRIBER saja di program sehingga sumber data terpusat di satu variabel saja, tetapi belum memastikan keamanan pengaksesan data secara *concurrent* pada operasi di *multithreading*. Oleh karena itu, penggunaan DashMap memberikan solusi untuk permasalahan tersebut karena DashMap memiliki *built-in* untuk keamanan *thread* sehingga dapat memastikan keamanan pengaksesan data secara *concurrent* di lingkungan *multithreaded*.
 
 #### Reflection Publisher-2
 
