@@ -58,12 +58,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement delete function in Subscriber repository.`
     -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -84,5 +84,12 @@ This is the place for you to write reflections:
 3. Dalam konteks *multithreading*, penggabungan antara penggunaan DashMap dan *Singleton Pattern* perlu untuk dilakukan untuk memastikan keamanan operasi *thread* secara *concurrent*. Penggunaan *Singleton Pattern* memberikan kepastian bahwa hanya terdapat satu objek SUBSCRIBER saja di program sehingga sumber data terpusat di satu variabel saja, tetapi belum memastikan keamanan pengaksesan data secara *concurrent* pada operasi di *multithreading*. Oleh karena itu, penggunaan DashMap memberikan solusi untuk permasalahan tersebut karena DashMap memiliki *built-in* untuk keamanan *thread* sehingga dapat memastikan keamanan pengaksesan data secara *concurrent* di lingkungan *multithreaded*.
 
 #### Reflection Publisher-2
+1. Pemisahan antara **Repository** dan **Service** dari **Model** perlu dilakukan agar memenuhi prinsip *Single Responsibility Principle (SRP)* dan *Separation of Concerns*. Dengan menerapkan SRP, setiap komponen dari program kita memiliki tugasnya tersendiri secara spesifik sehingga membuat program kita menjadi lebih modular dan mudah untuk di-*maintain* di kemudian hari. Selain itu, dengan menerapkan prinsip *Separation of Concerns* akan menyebabkan setiap komponen tidak memiliki ketergantungan yang kuat sehingga perubahan di salah satu komponen tidak akan berpengaruh terhadap keseluruhan kode program. Oleh karena itu, dengan memisahkan **Repository** dan **Service** dari **Model** akan membuat program kita lebih fleksibel, mengurangi kompleksitas, dan memudahkan pemeliharaan kode.
+
+2. Dengan menggabungkan **Repository** dan **Service** di **Model**, hal tersebut akan menyebabkan berkurangnya fleksibilitas kode karena setiap komponen pada program kita akan memiliki ketergantungan yang kuat antar satu sama lain. Dengan begitu, ketika kita ingin melakukan perubahan pada suatu komponen, hal tersebut dapat berakibat pada fungsionalitas komponen lain sehingga susah untuk beradaptasi dan melakukan pembaruan kode di kemudian hari.
+
+3. Menggunakan **Postman** membantu saya dalam menguji *endpoint* aplikasi dengan lebih mudah, seperti *request* GET, POST, PUT, DELETE, dan lain-lain. Dengan begitu, saya bisa menjadi lebih yakin untuk memastikan apakah program sudah memberikan fungsionalitas yang benar atau belum. Fitur-fitur lain pada **Postman** yang mungkin akan saya gunakan nantinya adalah:
+- **Automation**, **Postman** dapat memberikan fasilitas untuk menjalankan serangkaian *test* secara otomatis dan memonitoring *endpoint* API.
+- *Environment Variables*, **Postman** dapat membuat suatu *variable* yang dapat digunakan diberbagai *request* berbeda dan memudahkan ketika berada di *environments* yang berbeda, seperti *development, staging*, dan *production*.
 
 #### Reflection Publisher-3
