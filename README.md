@@ -65,11 +65,11 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement unsubscribe function in Notification controller.`
     -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
-    -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
-    -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
-    -   [ ] Commit: `Implement publish function in Program service and Program controller.`
-    -   [ ] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [x] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
+    -   [x] Commit: `Implement notify function in Notification service to notify each Subscriber.`
+    -   [x] Commit: `Implement publish function in Program service and Program controller.`
+    -   [x] Commit: `Edit Product service methods to call notify after create/delete.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -93,3 +93,12 @@ This is the place for you to write reflections:
 - *Environment Variables*, **Postman** dapat membuat suatu *variable* yang dapat digunakan diberbagai *request* berbeda dan memudahkan ketika berada di *environments* yang berbeda, seperti *development, staging*, dan *production*.
 
 #### Reflection Publisher-3
+1. Pada tutorial ini, kita menggunakan variasi **Push model** pada *Observer Pattern*. Hal ini ditandai dengan digunakannya method `notify` setiap kali dilakukan `create`, `delete`, dan `publish` Product. Dengan begitu, setiap kali ada perubahan data, maka Publisher akan *push* pembaruan tersebut langsung ke *Observer* atau dalam kasus ini adalah Subscriber.
+
+2. Jika menggunakan varian lainnya, yaitu **Pull model**, kita akan mendapatkan kelebihan dan kekurangannya, yaitu:
+- Kelebihan<br>
+Subscriber dapat memiliki kontrol penuh terhadap pembaruan data dari Publisher. Subscriber dapat memperoleh data terbaru kapan pun mereka mau. Selain itu, **Pull model** juga bisa membantu menghindari adanya transfer data dan notifikasi yang tidak diperlukan oleh Subscriber.
+- Kekurangan<br>
+Karena perbaruan data dari Publisher hanya dapat diketahui ketika Subscriber yang melakukan *pull* data dari Publisher, hal tersebut mengakibatkan Subscriber perlu melakukan *pull* secara berkala untuk mendapatkan *update* terbaru. Selain itu, Subscriber juga bisa tertinggal dengan *update* terbaru karena mereka tidak tahu kapan *update* tersebut sudah ada. Tidak hanya itu, penggunaan **Pull model** juga dapat meningkatkan keterkaitan antara Publisher dengan Observer sehingga akan cukup sulit untuk di-*maintain* dan meningkatkan kompleksitas *codebase* di sisi Observer karena perlu mengatasi masalah sinkronisasi dan strategi pengambilan data terbaru.
+
+3. Jika kita tidak menggunakan konsep *multi-threading* dalam hal notifikasi, maka hal tersebut akan menyebabkan terjadinya *bottleneck* dalam sistem yang akan mengakibatkan proses pengiriman notifikasi ke setiap Subscriber menjadi sangat lambat. Hal tersebut terjadi karena pengiriman notifikasi perlu dilakukan satu per satu atau hanya bisa melalui satu *thread* sehingga akan menghambat proses pengiriman notifikasi.
